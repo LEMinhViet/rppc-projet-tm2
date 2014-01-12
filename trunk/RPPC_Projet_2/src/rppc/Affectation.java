@@ -21,15 +21,17 @@ public class Affectation {
      * Lire le fichier d'entrée
      * @throws IOException 
      */
-    public void lireDonnee() {
+    public void lireDonnee(String filename) {
     	try {
-    		Scanner scanner = new Scanner(new File("data//20_200.in"));
-				
+    		Scanner scanner = new Scanner(new File(filename));
+			
+    		// D'abord, lire le nombre d'agent et nombre de tache dans le probleme
 			nombreDeAgent = scanner.nextInt();
 			nombreDeTache = scanner.nextInt();
 			
 			capacite = new int[nombreDeAgent];
 			
+			// Lire les cout d'execution
 			for (int i = 0; i < nombreDeAgent; i++) {
 				for (int j = 0; j < nombreDeTache; j++) {
 					if (i == 0) {
@@ -40,12 +42,14 @@ public class Affectation {
 				}			
 			}
 			
+			// Lire les ressources requis pour l'execution 
 			for (int i = 0; i < nombreDeAgent; i++) {
 				for (int j = 0; j < nombreDeTache; j++) {
 					taches.get(j).addRessource(i, scanner.nextInt());				
 				}			
 			}			
 		
+			// Lire les capacites des agents
 			for (int i = 0; i < nombreDeAgent; i++) {
 				capacite[i] = scanner.nextInt();	
 			}
@@ -57,7 +61,12 @@ public class Affectation {
 		}    	
     }
     
+    /**
+     * Traiter le probleme avec 1 de 3 algorithme - les NOMs des algorithmes sont dans le fichier Main.java
+     * @param algorithme : nom de l'algorithme
+     */
     public void traiter(int algorithme) {
+    	// Les algorithme modifient le tableau "capacite", donc on utilise un autre tableau pour stocker
     	int[] _capacite = Arrays.copyOf(capacite, capacite.length);
 		if (algorithme == Main.GREEDY) {
     		Greedy greedy = new Greedy(taches, _capacite);
