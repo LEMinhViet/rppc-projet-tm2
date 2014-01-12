@@ -2,6 +2,7 @@ package rppc;
 
 import java.util.List;
 
+// L'ALGORITHME GLOUTON
 public class Greedy {
 	private List<Tache> taches;
 
@@ -9,8 +10,12 @@ public class Greedy {
 	private int[] capacite;
 
 	private int nombreDeTache;
-	private int cout;
 	    
+	/**
+	 * Initialisation
+	 * @param taches : les taches de probleme 
+	 * @param capacite : les capacite des agents
+	 */
 	public Greedy(List<Tache> taches, int[] capacite) {
 		this.taches = taches;
 		this.capacite = capacite;
@@ -22,6 +27,13 @@ public class Greedy {
 		}
 	}
 	
+	/**
+	 * L'algorithme glouton : 
+	 * Pour chaque tache 
+	 * - Trier les agents - trouver les meilleur (coût plus petit)
+	 * 	 + Si ne pas pouvoir trouver un agent => echouer 
+	 * - Assigner la tache a l'agents, diminuer sa capacite
+	 */
 	public void traiter() {
 		for (int i = 0; i < nombreDeTache; i++) {
     		taches.get(i).trierCout();
@@ -36,15 +48,21 @@ public class Greedy {
     		}
     	}
     	
-    	cout = 0;
-    	for (int i = 0; i < nombreDeTache; i++) {
-//    		System.out.println("tache : " + i + " with agent " + affectation[i]);
-    		cout += affectation[i] != -1 ? taches.get(i).getCout(affectation[i]) : 0;
-    	}
-    	System.out.println("Cout total : " + cout);
+		afficherResultat();    	
     }
 	
 	public int[] getAffectation() {
     	return affectation;
     }
+	
+	private void afficherResultat() {
+		int cout = 0;
+    	for (int i = 0; i < nombreDeTache; i++) {
+//    		System.out.println("tache : " + i + " with agent " + affectation[i]);
+    		cout += affectation[i] != -1 ? taches.get(i).getCout(affectation[i]) : 0;
+    	}
+    	System.out.println("Algorithme glouton - Cout total : " + cout);
+	}
+	
+	
 }
