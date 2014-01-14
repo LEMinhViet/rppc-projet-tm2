@@ -35,7 +35,7 @@ public class Voisinage {
 			solutionCourant = chercherVoisinage(solutionCourant, i);
 		}
 		
-		System.out.println("Cout total : " + getCout(solutionCourant));
+		System.out.println("Voisinage - Cout total : " + getCout(solutionCourant));
 	}
 	
 	/**
