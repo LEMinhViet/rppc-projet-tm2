@@ -5,7 +5,7 @@ import java.util.List;
 
 // VARIABLE EIGHBORHOOD SEARCH
 public class VNS {
-	private final int MAX_NON_IMPROVE = 5000;
+	private final int MAX_NON_IMPROVE = 1000;
 	// Le nombre de l'etape qui n'a pas l'improvement
 	private int nombreNonImprove = 0;
 	
@@ -88,6 +88,11 @@ public class VNS {
 		}		
 	}
 	
+	/**
+	 * Chercher tous les voisinages et trouver la meilleure solution dans ces ceux-la
+	 * @param solution
+	 * @return
+	 */
 	public int[] chercherLocal(int[] solution) {
 		int[] solutionLocal = new int[solution.length];
 		int[] meuilleurSolutionLocal = solution;

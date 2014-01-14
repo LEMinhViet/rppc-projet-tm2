@@ -7,10 +7,10 @@ public class Main {
 	
 	public static void main(String[] args) {
 		Affectation affectation = new Affectation();
-		// Lire les données - http://people.brunel.ac.uk/~mastjjb/jeb/orlib/gapinfo.html
+		// Lire les donnÃ©es - http://people.brunel.ac.uk/~mastjjb/jeb/orlib/gapinfo.html
 		affectation.lireDonnee("data//20_200.in");
 		
-		// Traiter les donneés par les differents methodes
+		// Traiter les donneÃ©s par les differents methodes
 		affectation.traiter(GREEDY);
 		affectation.traiter(VOISINAGES);
 		affectation.traiter(VNS);
